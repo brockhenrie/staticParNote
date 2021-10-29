@@ -13,14 +13,12 @@ export class ParTemplateComponent implements OnInit {
     'NI',
     'CLMNT',
     'OIC',
-    'NI Att',
-    'CLMNT Att'
+    'Att',
   ];
   purposes = [
     'Personal',
     'Buisness',
     'Rideshare',
-    'Parked'
   ];
 
   payees = [

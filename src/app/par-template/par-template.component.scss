@@ -1,13 +1,33 @@
 .form-item{
   padding: auto;
+
 }
 
 .card {
   width: 100%;
   height: 100%;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  justify-content: space-between;
+
 }
 
 .extra-notes {
   width: 90%;
+}
+
+.radio-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+
+}
+.radio-item{
+  align-self: flex-end;
+}
+
+.radio-label{
+  align-self: flex-start;
 }
