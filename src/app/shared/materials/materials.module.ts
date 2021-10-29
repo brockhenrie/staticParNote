@@ -10,6 +10,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatListModule} from '@angular/material/list';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatCardModule,
     MatCheckboxModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatListModule,
+    TextFieldModule
   ],
   exports: [
     MatSidenavModule,
@@ -37,7 +41,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatCardModule,
     MatCheckboxModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatListModule,
+    TextFieldModule
   ]
 })
 export class MaterialsModule { }

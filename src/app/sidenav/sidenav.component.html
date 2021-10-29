@@ -1,6 +1,13 @@
 <mat-drawer-container class="sidenav-container">
   <mat-drawer class="sidenav-drawer" mode="side" [opened]='sidenavOpen'>
-    <mat-toolbar color="primary"></mat-toolbar>
+    <mat-toolbar color="primary">
+      <span>Menu</span>
+    </mat-toolbar>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/par'>Par</a></li>
+    </ul>
+
   </mat-drawer>
   <mat-drawer-content>
 
@@ -8,19 +15,25 @@
       <button mat-icon-button class="example-icon" (click)="sidenavOpen = !sidenavOpen">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>My App</span>
+      <span>Notes</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
     </mat-toolbar>
 
-    
+    <div>
 
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
+
+    </div>
+
+
+    <div class='notes'>
+      <mat-form-field class="notes" appearance="fill">
+        <mat-label>Notes</mat-label>
+        <textarea matInput cdkTextareaAutosize  cdkAutosizeMinRows="15"  cdkAutosizeMaxRows='100'></textarea>
+      </mat-form-field>
+    </div>
+
+
 
   </mat-drawer-content>
 </mat-drawer-container>
