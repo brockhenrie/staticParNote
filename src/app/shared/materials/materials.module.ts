@@ -14,6 +14,7 @@ import {MatListModule} from '@angular/material/list';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatListModule,
     TextFieldModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSnackBarModule
   ],
   exports: [
     MatSidenavModule,
@@ -49,7 +51,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatListModule,
     TextFieldModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialsModule { }

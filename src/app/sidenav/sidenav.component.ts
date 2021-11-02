@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
   sidenavOpen = false;
-activeRoute = 'Par'
+  activeRoute = 'Par';
+  routes: string[] = ['Home', 'PAR', 'QFC', 'Word Tracts', 'Note Pad Only'];
 
   @Input('cdkAutosizeMinRows') minRows= 4;
 

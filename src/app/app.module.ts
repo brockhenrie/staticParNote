@@ -7,14 +7,25 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ParTemplateComponent } from './par-template/par-template.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
+import { NotePadComponent } from './note-pad/note-pad.component';
+import { HomeComponent } from './home/home.component';
+import { WordTractsComponent } from './word-tracts/word-tracts.component';
+import { QfcComponent } from './qfc/qfc.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
-    ParTemplateComponent
+    ParTemplateComponent,
+    NotePadComponent,
+    HomeComponent,
+    WordTractsComponent,
+    QfcComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +34,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     MaterialsModule,
     FormsModule,
     ClipboardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

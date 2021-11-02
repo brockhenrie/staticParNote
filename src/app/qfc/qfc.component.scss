@@ -20,6 +20,7 @@
   flex-wrap: wrap;
   align-items: baseline;
   font-size: small;
+  width: 80%;
 }
 
 .list-label{
@@ -28,7 +29,9 @@
 
 }
 
-
+.list-input {
+  width: 100%;
+}
 
 .list-val{
 padding: 5px;

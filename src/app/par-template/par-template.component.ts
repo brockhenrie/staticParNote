@@ -1,6 +1,7 @@
+import { FormDataService } from './../form-data.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ClipboardService } from 'ngx-clipboard';
+import { FormBuilder, FormGroup, NgForm, FormArray, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-par-template',
@@ -8,60 +9,99 @@ import { ClipboardService } from 'ngx-clipboard';
   styleUrls: ['./par-template.component.scss']
 })
 export class ParTemplateComponent implements OnInit {
-  persons = [
-    'FNI',
-    'NI',
-    'CLMNT',
-    'OIC',
-    'Att',
-  ];
+  persons =[
+    ''];
   purposes = [
-    'Personal',
-    'Buisness',
-    'Rideshare',
+    ''
   ];
-
   payees = [
-    'SS',
-    'NPS',
-    'Insured/Clmnt'
+    ''
   ];
 
-  constructor(private clipboardApi: ClipboardService) { }
+
+  parForm = this.fb.group({
+    name: '',
+    purposeOfTrip: this.fb.array([
+
+    ]),
+    coverages: true,
+    cprs: false,
+    cprsReplacement: false,
+    tow: false,
+    towID: '',
+    mitigation: false,
+    ocs: true,
+    termsConditions: true,
+    odm: true,
+    adsp: true,
+    supp: false,
+    dtp: 'SS',
+    cic: false,
+    pr: false,
+    injuries: false,
+    sub: false,
+    additionalNotes: ''
+  });
+
+
+
+
+  constructor(
+    private fd: FormDataService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
-  }
+    this.purposes = this.fd.getPurposes();
+    for (let index = 0; index < this.purposes.length; index++) {
+      this.addPurpose(this.purposes[index]);
+    };
 
-  onSubmit(form: NgForm){
+  };
+
+
+  onSubmit(){
     var copyForm = `
-    Spoke to: ${form.value.spokeTo || 'no'}
-    Purpose of trip: ${form.value.purposeOfTrip || 'no'}
-    Coverages explained: ${form.value.coveragesExplained || 'no'}
-    Cprs: ${form.value.cprs || 'no'}
-    Cprs Replacement Needed: ${form.value.cprsReplacement || 'no'}
-    Tow: ${form.value.tow|| 'no'}
-    Tow ID: ${form.value.towID || 'no'}
-    Explained Mitigation: ${form.value.mitigation || 'no'}
-    Explained OCS/CSS: ${form.value.ocs|| 'no'}
-    Explained Terms&Conditions: ${form.value.terms|| 'no'}
-    Explained ODM: ${form.value.odm|| 'no'}
-    Explained ADSP/RWT: ${form.value.adsp|| 'no'}
-    Explained Supp/Payments: ${form.value.supp|| 'no'}
-    Direction to Pay: ${form.value.dtp|| 'no'}
-    Explained CIC/JR: ${form.value.cic|| 'no'}
-    PR Requested: ${form.value.pr|| 'no'}
-    Injuries: ${form.value.injuries|| 'no'}
-    Sub Potential: ${form.value.sub|| 'no'}
-    Additional Notes: ${form.value.additionalNotes|| 'no'}
+    P/A:
+    Spoke to: ${this.parForm.value.spokeTo || 'no'}
+    Purpose of trip: ${this.parForm.value.purposeOfTrip || 'no'}
+    Coverages explained: ${this.parForm.value.coveragesExplained || 'no'}
+    Cprs: ${this.parForm.value.cprs || 'no'}
+    Cprs Replacement Needed: ${this.parForm.value.cprsReplacement || 'no'}
+    Tow: ${this.parForm.value.tow|| 'no'}
+    Tow ID: ${this.parForm.value.towID || 'no'}
+    Explained Mitigation: ${this.parForm.value.mitigation || 'no'}
+    Explained OCS/CSS: ${this.parForm.value.ocs|| 'no'}
+    Explained Terms&Conditions: ${this.parForm.value.terms|| 'no'}
+    Explained ODM: ${this.parForm.value.odm|| 'no'}
+    Explained ADSP/RWT: ${this.parForm.value.adsp|| 'no'}
+    Explained Supp/Payments: ${this.parForm.value.supp|| 'no'}
+    Direction to Pay: ${this.parForm.value.dtp|| 'no'}
+    Explained CIC/JR: ${this.parForm.value.cic|| 'no'}
+    PR Requested: ${this.parForm.value.pr|| 'no'}
+    Injuries: ${this.parForm.value.injuries|| 'no'}
+    Sub Potential: ${this.parForm.value.sub|| 'no'}
+    Additional Notes: ${this.parForm.value.additionalNotes|| 'no'}
 
     R:
-    `
-    // var copiedForm = JSON.stringify(form.value);
-    // console.log(copiedForm);
-   this.clipboardApi.copyFromContent(copyForm);
+    `;
+   this.fd.onCopy(copyForm);
   }
 
-  onReset(form: NgForm){
-    form.reset();
+  get purposeOfTrip() {
+    return this.parForm.controls['purposeOfTrip'] as FormArray;
+  };
+
+  addPurpose(name:string){
+    const purpose = this.fb.group({
+      name: name,
+    });
+    this.purposeOfTrip.push(purpose);
+  }
+
+
+
+  onReset(){
+    this.parForm.reset();
+    this.fd.openSnackBar('Form Reset', 'ok');
   }
 }

@@ -1,0 +1,11 @@
+.view {
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+  flex-flow: column nowrap;
+  row-gap: 10px;
+}
+
+.card {
+  width: 80%;
+}
