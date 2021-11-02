@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
   sidenavOpen = false;
+activeRoute = 'Par'
 
   @Input('cdkAutosizeMinRows') minRows= 4;
 

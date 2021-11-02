@@ -1,7 +1,3 @@
-.form-item{
-  padding: auto;
-
-}
 
 .card {
   width: 100%;
@@ -13,21 +9,28 @@
 
 }
 
+
 .extra-notes {
   width: 90%;
 }
 
-.radio-container{
+.list-item {
   display: flex;
-  flex-direction: row;
-  gap: 10px;
-
-
-}
-.radio-item{
-  align-self: flex-end;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
 }
 
-.radio-label{
-  align-self: flex-start;
+.list-label{
+  justify-content: flex-start;
+  flex-grow: 1;
+
+}
+
+.spacer{
+  flex-grow: 4;
+}
+
+.list-val{
+padding: 5px;
 }

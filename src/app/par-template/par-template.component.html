@@ -1,111 +1,137 @@
 
 <mat-card class="card">
-  <mat-card-header>
-    <div mat-card-avatar class=""></div>
-    <mat-card-title>PAR Template</mat-card-title>
-  </mat-card-header>
+
 
   <mat-card-content>
     <form #f='ngForm' (ngSubmit)="onSubmit(f)" class="card">
+      <mat-list>
+        <mat-list-item>
+            <div class='list-item'>
+              <label id="spokeToLabel" class="list-label" > Spoke to:</label>
+              <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                name='spokeTo'
+                ngModel
+              >
+              <span class="spacer">
 
-      <div class="radio-container">
-        <div >
-          <label id="spokeToLabel" class="radio-label" > Spoke to:</label>
-          <mat-radio-group
-            aria-labelledby="example-radio-group-label"
-            name='spokeTo'
-            ngModel
-          >
-            <mat-radio-button
-            class='radio-item'
-             color='primary'
-             *ngFor="let person of persons" [value]="person">
-              {{person}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
+              </span>
+                <mat-radio-button
+                class='list-val'
+                 color='primary'
+                 *ngFor="let person of persons" [value]="person">
+                  {{person}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
 
+        <mat-list-item>
+          <div class='list-item'>
+            <label id="spokeToLabel" class="list-label">Purpose of Trip:</label>
+            <mat-radio-group
+              name='purposeOfTrip'
+              ngModel
+            >
+              <mat-radio-button
+              class='list-val'
+               color='primary'
+               *ngFor="let purpose of purposes" [value]="purpose">
+                {{purpose}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section">
+              <mat-checkbox color='primary' name='coveragesExplained' ngModel>Coverages Explained</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section">
+              <mat-checkbox color='primary' name='cprs' ngModel>Cprs</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngIf="f.value.cprs === true">
+          <div class='flist-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='cprsReplacement' ngModel>Replacement needed</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
 
-      </div>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='tow' ngModel>Tow</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngIf="f.value.tow === true">
+          <div class='flist-item' >
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tow ID</mat-label>
+              <input name='towId' ngModel matInput  >
+            </mat-form-field>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='mitigation' ngModel>Explained Mitigation</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
 
-      <div class='form-Item'>
-        <label id="spokeToLabel" >Purpose of Trip</label>
-        <mat-radio-group
-          name='purposeOfTrip'
-          ngModel
-        >
-          <mat-radio-button
-          class='form-Item'
-           color='primary'
-           *ngFor="let purpose of purposes" [value]="purpose">
-            {{purpose}}
-          </mat-radio-button>
-        </mat-radio-group>
-      </div>
-
-      <div class='form-Item'>
-        <section class="example-section">
-          <mat-checkbox color='primary' name='coveragesExplained' ngModel>Coverages Explained</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item'>
-        <section class="example-section">
-          <mat-checkbox color='primary' name='cprs' ngModel>Cprs</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item'>
-        <section class="example-section"  *ngIf="f.value.cprs === true">
-          <mat-checkbox color='primary' name='cprsReplacement' ngModel>Replacement needed</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='tow' ngModel>Tow</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item' *ngIf="f.value.tow === true">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Tow ID</mat-label>
-          <input name='towId' ngModel matInput  >
-        </mat-form-field>
-      </div>
-
-      <div class='form-Item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='mitigation' ngModel>Explained Mitigation</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item'>
+      <div class='list-item'>
         <section class="example-section"  >
           <mat-checkbox color='primary' name='ocs' ngModel>Explained OCS/CSS</mat-checkbox>
         </section>
       </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='terms' ngModel>Explained Terms&Conditions</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
 
-      <div class='form-Item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='terms' ngModel>Explained Terms&Conditions</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item'>
+      <div class='list-item'>
         <section class="example-section"  >
           <mat-checkbox color='primary' name='odm' ngModel>Explained ODM</mat-checkbox>
         </section>
       </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='adsp' ngModel>Explained ADSP/RWT</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
 
-      <div class='form-Item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='adsp' ngModel>Explained ADSP/RWT</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item'>
-        <label id="spokeToLabel" > Direction to Pay</label>
+      <div class='list-item'>
+        <label id="spokeToLabel" class="list-label"> Direction to Pay</label>
         <mat-radio-group
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
@@ -113,58 +139,69 @@
           ngModel
         >
           <mat-radio-button
-          class='form-Item'
+          class='list-val'
            color='primary'
            *ngFor="let payee of payees" [value]="payee">
             {{payee}}
           </mat-radio-button>
         </mat-radio-group>
       </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item  *ngIf="f.value.dtp !== 'SS' && f.value.dtp !== ''">
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='supp' ngModel>Explained Supp/Payments</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='cic' ngModel>Explained CIC/JR</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='pr' ngModel>PR Requested</mat-checkbox>
+            </section>
+          </div>
 
-      <div class='form-Item' *ngIf="f.value.dtp !== 'SS' && f.value.dtp !== ''">
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='supp' ngModel>Explained Supp/Payments</mat-checkbox>
-        </section>
-      </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='injuries' ngModel>Injuries</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' name='sub' ngModel>Sub Potential</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
 
-      <div class='form-Item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='cic' ngModel>Explained CIC/JR</mat-checkbox>
-        </section>
-      </div>
+      </mat-list>
 
-      <div class='form-Item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='pr' ngModel>PR Requested</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='injuries' ngModel>Injuries</mat-checkbox>
-        </section>
-      </div>
-
-      <div class='form-Item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='sub' ngModel>Sub Potential</mat-checkbox>
-        </section>
-      </div>
-
-      <mat-form-field class="extra-notes" appearance="fill">
-        <mat-label>Additional Notes</mat-label>
-        <textarea matInput name='additionalNotes' ngModel></textarea>
-      </mat-form-field>
-
-
-
-
-
-
-
+          <mat-form-field class="extra-notes" >
+            <mat-label>Additional Notes</mat-label>
+            <textarea matInput name='additionalNotes' ngModelcdkTextareaAutosize  cdkAutosizeMinRows="15"  cdkAutosizeMaxRows='100'></textarea>
+          </mat-form-field>
 
 
     </form>
+
+
+
 
 
   </mat-card-content>
@@ -173,5 +210,8 @@
     <button mat-button  (click)="onReset(f)">Reset</button>
   </mat-card-actions>
 </mat-card>
+
+
+
 
 

@@ -15,7 +15,7 @@
       <button mat-icon-button class="example-icon" (click)="sidenavOpen = !sidenavOpen">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Notes</span>
+      <span>{{activeRoute}}</span>
       <span class="example-spacer"></span>
     </mat-toolbar>
 
@@ -26,12 +26,6 @@
     </div>
 
 
-    <div class='notes'>
-      <mat-form-field class="notes" appearance="fill">
-        <mat-label>Notes</mat-label>
-        <textarea matInput cdkTextareaAutosize  cdkAutosizeMinRows="15"  cdkAutosizeMaxRows='100'></textarea>
-      </mat-form-field>
-    </div>
 
 
 

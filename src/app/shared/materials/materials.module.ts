@@ -12,6 +12,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list';
 import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     MatInputModule,
     MatFormFieldModule,
     MatListModule,
-    TextFieldModule
+    TextFieldModule,
+    MatGridListModule,
+    MatDividerModule
   ],
   exports: [
     MatSidenavModule,
@@ -43,7 +47,9 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     MatInputModule,
     MatFormFieldModule,
     MatListModule,
-    TextFieldModule
+    TextFieldModule,
+    MatGridListModule,
+    MatDividerModule
   ]
 })
 export class MaterialsModule { }
