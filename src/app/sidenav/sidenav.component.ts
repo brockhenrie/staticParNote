@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router, RouterLinkActive } from '@angular/router';
+import { Router } from '@angular/router';
+import { FormDataService } from '../form-data.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,14 +9,24 @@ import { Router, RouterLinkActive } from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
   sidenavOpen = false;
-  activeRoute = 'Par';
+
   routes: string[] = ['Home', 'PAR', 'QFC', 'Word Tracts', 'Note Pad Only'];
+  activeRoute = 'Note Buddy';
+
 
   @Input('cdkAutosizeMinRows') minRows= 4;
 
-  constructor() { }
+  constructor(private fd: FormDataService,
+    private router:Router) { }
+
+
 
   ngOnInit(): void {
+    this.activeRoute = this.fd.getActiveRoute();
+
+
   }
+
+
 
 }

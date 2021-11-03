@@ -1,1 +1,90 @@
-<div></div>
+<div>
+  <mat-card class="card">
+    <mat-card-title>Welcome</mat-card-title>
+    <mat-card-content>
+      <label>Useful Information</label>
+      <div>
+        <div class="action-buttons">
+          <button mat-button (click)="accordion.openAll()">Expand All</button>
+          <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+        </div>
+        <mat-accordion class="headers-align" multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Language Line Solutions
+              </mat-panel-title>
+              <mat-panel-description>
+                Call info
+                <mat-icon>account_circle</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <form [formGroup]='languageLine' >
+              <mat-form-field appearance="fill">
+                <mat-label>Client ID</mat-label>
+                <input formControlName="clientID" matInput value='799841'>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Department Code</mat-label>
+                <input matInput formControlName="departmentCode" type="number" value="124753">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Personal Extension</mat-label>
+                <input matInput formControlName="personalExtension" type="number" >
+              </mat-form-field>
+            </form >
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Restoration Numbers
+              </mat-panel-title>
+              <mat-panel-description>
+                Phone Numbers
+                <mat-icon>phone</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>ServPro: 1-800-737-8776</p>
+            <p>Service Master: 1-800-737-7663</p>
+            <p>Alacrity: 1-877-828-3276</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Acronyms
+              </mat-panel-title>
+              <mat-panel-description>
+                Acros
+                <mat-icon>description</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div *ngFor="let acro of acronyms">
+
+            </div>
+            <p *ngFor="let acro of acronyms">
+              <b>{{acro.name}}</b>: {{acro.desc}}
+            </p>
+
+          </mat-expansion-panel>
+
+
+        </mat-accordion>
+
+
+
+      </div>
+
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <label>Quick Links:</label>
+      <button mat-button (click)="onQuickNavigate('PAR')">Par</button>
+      <button mat-button (click)="onQuickNavigate('QFC')">Qfc</button>
+      <button mat-button (click)="onQuickNavigate('Note Pad Only')">Notepad</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,6 +1,6 @@
 import { FormDataService } from './../form-data.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, FormArray, FormControl } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -8,55 +8,60 @@ import { FormBuilder, FormGroup, NgForm, FormArray, FormControl } from '@angular
   templateUrl: './par-template.component.html',
   styleUrls: ['./par-template.component.scss']
 })
-export class ParTemplateComponent implements OnInit {
-  persons =[
-    ''];
-  purposes = [
-    ''
-  ];
-  payees = [
-    ''
-  ];
+export class ParTemplateComponent implements OnInit, OnDestroy{
+  persons!: any[];
+  purposes!: any[];
+  payees!: any[];
+
+  parForm!: FormGroup;
 
 
-  parForm = this.fb.group({
-    name: '',
-    purposeOfTrip: this.fb.array([
-
-    ]),
-    coverages: true,
-    cprs: false,
-    cprsReplacement: false,
-    tow: false,
-    towID: '',
-    mitigation: false,
-    ocs: true,
-    termsConditions: true,
-    odm: true,
-    adsp: true,
-    supp: false,
-    dtp: 'SS',
-    cic: false,
-    pr: false,
-    injuries: false,
-    sub: false,
-    additionalNotes: ''
-  });
 
 
 
 
   constructor(
     private fd: FormDataService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder) {
+
+
+    }
 
   ngOnInit(): void {
+
+
     this.purposes = this.fd.getPurposes();
-    for (let index = 0; index < this.purposes.length; index++) {
-      this.addPurpose(this.purposes[index]);
-    };
+    this.persons = this.fd.getPersons();
+    this.payees = this.fd.getPayees();
+    this.parForm = this.fd.getParForm();
+
+
+
+
+
+
+    // for (let index = 0; index < this.purposes.length; index++) {
+    //   this.addPurpose(this.purposes[index]);
+    // };
+
+    // for (let index = 0; index < this.persons.length; index++) {
+    //   this.addSpokeTo(this.persons[index]);
+    // };
+
+    // for (let index = 0; index < this.payees.length; index++) {
+    //   this.addDtp(this.payees[index]);
+    // };
+
+
 
   };
+
+  ngOnDestroy(){
+    this.fd.onKeepParForm(this.parForm);
+
+  }
+
+
 
 
   onSubmit(){
@@ -85,18 +90,10 @@ export class ParTemplateComponent implements OnInit {
     R:
     `;
    this.fd.onCopy(copyForm);
-  }
-
-  get purposeOfTrip() {
-    return this.parForm.controls['purposeOfTrip'] as FormArray;
   };
 
-  addPurpose(name:string){
-    const purpose = this.fb.group({
-      name: name,
-    });
-    this.purposeOfTrip.push(purpose);
-  }
+
+
 
 
 

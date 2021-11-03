@@ -1,4 +1,6 @@
 <mat-form-field class="extra-notes" appearance="fill" >
   <mat-label>Notes</mat-label>
-  <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows='100'  name='additionalNotes' [value]='textOnly'  ></textarea>
+  <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows='100'  name='additionalNotes' [(ngModel)]="textOnly"  ></textarea>
 </mat-form-field>
+
+

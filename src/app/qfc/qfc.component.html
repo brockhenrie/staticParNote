@@ -3,13 +3,13 @@
 
 
   <mat-card-content>
-    <form #f='ngForm' (ngSubmit)="onSubmit(f)" class="card">
+    <form  [formGroup]='qfcForm' (ngSubmit)="onSubmit()" class="card">
       <mat-list>
         <div class="list-item">
           <mat-list-item>
             <mat-form-field class="list-input">
               <mat-label>Name </mat-label>
-              <input matInput name="name" value="Name" ngModel>
+              <input matInput formControlName="name" value="Name" >
             </mat-form-field>
           </mat-list-item>
         </div>
@@ -18,7 +18,7 @@
           <div class='list-item'>
             <mat-form-field class="list-input" >
               <mat-label>Customer Described FOL:</mat-label>
-              <input matInput name="fol" value="Name" ngModel>
+              <input matInput formControlName="fol" value="Name" >
             </mat-form-field>
 
           </div>
@@ -28,14 +28,14 @@
           <div class='list-item'>
             <label id="spokeToLabel" class="list-label">Purpose of Trip:</label>
             <mat-radio-group
-              name='purposeOfTrip'
-              ngModel
+            formControlName='purposeOfTrip'
+
             >
               <mat-radio-button
               class='list-val'
                color='primary'
-               *ngFor="let purpose of purposes" [value]="purpose">
-                {{purpose}}
+               *ngFor="let purpose of purposes" [value]="purpose.id">
+                {{purpose.name}}
               </mat-radio-button>
             </mat-radio-group>
           </div>
@@ -45,7 +45,7 @@
           <div class='list-item'>
             <mat-form-field class="list-input" >
               <mat-label>Passengers:</mat-label>
-              <input matInput name="passengers" value="Name" ngModel>
+              <input matInput formControlName="passengers" value="Name" >
             </mat-form-field>
 
           </div>
@@ -54,7 +54,7 @@
         <mat-list-item >
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='injuries' ngModel>Injuries</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='injuries' >Injuries</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -63,7 +63,7 @@
         <mat-list-item>
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='compNeg' ngModel>Comparative/Contributory Negligence Considered</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='compNeg' >Comparative/Contributory Negligence Considered</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -72,24 +72,7 @@
         <mat-list-item>
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='liability' ngModel>Liability Explained</mat-checkbox>
-            </section>
-          </div>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-
-      <div class='list-item'>
-        <section class="example-section"  >
-          <mat-checkbox color='primary' name='sub' ngModel>Sub Identified/OIC Updated</mat-checkbox>
-        </section>
-      </div>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <div class='list-item'>
-            <section class="example-section"  >
-              <mat-checkbox color='primary' name='coverages' ngModel>Coverages Explained</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='liability' >Liability Explained</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -98,7 +81,7 @@
 
       <div class='list-item'>
         <section class="example-section"  >
-          <mat-checkbox color='primary' name='adsp' ngModel>ADSP Explained</mat-checkbox>
+          <mat-checkbox color='primary' formControlName='sub' >Sub Identified/OIC Updated</mat-checkbox>
         </section>
       </div>
         </mat-list-item>
@@ -106,7 +89,24 @@
         <mat-list-item>
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='adsp' ngModel>Explained ADSP/RWT</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='coverages' >Coverages Explained</mat-checkbox>
+            </section>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+
+      <div class='list-item'>
+        <section class="example-section"  >
+          <mat-checkbox color='primary' formControlName='adsp' >ADSP Explained</mat-checkbox>
+        </section>
+      </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class='list-item'>
+            <section class="example-section"  >
+              <mat-checkbox color='primary' formControlName='adsp' >Explained ADSP/RWT</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -115,15 +115,15 @@
         <mat-list-item >
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='storage' ngModel>Storage Accruing (If yes, indicate if 3-way call completed)</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='storage' >Storage Accruing (If yes, indicate if 3-way call completed)</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item *ngIf='f.value.storage === true'>
+        <mat-list-item *ngIf='qfcForm.value.storage === true'>
           <div class='list-item' >
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='storageCall' ngModel>3-way call completed</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='storageCall' >3-way call completed</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -131,7 +131,7 @@
         <mat-list-item>
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='clmntInspection' ngModel>Explained Claimant Inspection Options</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='clmntInspection' >Explained Claimant Inspection Options</mat-checkbox>
             </section>
           </div>
 
@@ -140,7 +140,7 @@
         <mat-list-item>
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='eft' ngModel>Offered EFT</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='eft' >Offered EFT</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -148,7 +148,7 @@
         <mat-list-item>
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='rental' ngModel>Rental Explained</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='rental' >Rental Explained</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -156,7 +156,7 @@
         <mat-list-item>
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='jr' ngModel>Jurisdictional Requirements</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='jr' >Jurisdictional Requirements</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -164,7 +164,7 @@
         <mat-list-item>
           <div class='list-item'>
             <section class="example-section"  >
-              <mat-checkbox color='primary' name='ocs' ngModel>Explained Online Claim Services/Self Services</mat-checkbox>
+              <mat-checkbox color='primary' formControlName='ocs'>Explained Online Claim Services/Self Services</mat-checkbox>
             </section>
           </div>
         </mat-list-item>
@@ -175,7 +175,7 @@
 
           <mat-form-field class="extra-notes" >
             <mat-label>Additional Notes</mat-label>
-            <textarea matInput name='additionalNotes' ngModelcdkTextareaAutosize  cdkAutosizeMinRows="15"  cdkAutosizeMaxRows='100'></textarea>
+            <textarea matInput formControlName='additionalNotes' ngModelcdkTextareaAutosize  cdkAutosizeMinRows="15"  cdkAutosizeMaxRows='100'></textarea>
           </mat-form-field>
 
 
@@ -187,8 +187,8 @@
 
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button type='submit' (click)="onSubmit(f)">Copy</button>
-    <button mat-button  (click)="onReset(f)">Reset</button>
+    <button mat-button type='submit' (click)="onSubmit()">Copy</button>
+    <button mat-button  (click)="onReset()">Reset</button>
   </mat-card-actions>
 </mat-card>
 

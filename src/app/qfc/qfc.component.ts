@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ClipboardService } from 'ngx-clipboard';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { FormDataService } from '../form-data.service';
 
 @Component({
@@ -8,12 +7,14 @@ import { FormDataService } from '../form-data.service';
   templateUrl: './qfc.component.html',
   styleUrls: ['./qfc.component.scss']
 })
-export class QfcComponent implements OnInit {
+export class QfcComponent implements OnInit , OnDestroy{
 
 
-  purposes: string[]=[];
+  purposes: any[]=[];
 
-  payees: string[] = [];
+  payees:any[] = [];
+
+  qfcForm!: FormGroup;
 
 
 
@@ -21,40 +22,48 @@ export class QfcComponent implements OnInit {
 
 
   constructor(
-    private fd:FormDataService) { }
+    private fd:FormDataService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.payees = this.fd.getPayees();
     this.purposes = this.fd.getPurposes();
+    this.qfcForm = this.fd.getQfcForm();
+
+  };
+
+  ngOnDestroy(){
+    this.fd.onKeepQfcForm(this.qfcForm);
+
   }
 
-  onSubmit(form: NgForm){
-    var qfcForm = `
+  onSubmit(){
+    var qfcFormCopy = `
     Quality First Contact
-      QFC (Name): ${form.value.name || 'no'}
-      Customer Described FOL (Speed/Time/Distance/Lookout): ${form.value.fol  || 'no'}
-      Purpose of Trip: ${form.value.purposeOfTrip || 'no'}
-      Passengers: ${form.value.passengers || 'no'}
-      Injuries: ${form.value.injuries || 'no'}
-      Comparative/Contributory Negligence Considered: ${form.value.compNeg  || 'no'}
-      Liability Explained: ${form.value.liability  || 'no'}
-      Sub Identified/OIC Updated: ${form.value.sub || 'no'}
-      Coverages Explained: ${form.value.coverages || 'no'}
-      ADSP Explained: ${form.value.adsp || 'no'}
-      Storage Accruing (If yes, indicate if 3-way call completed): ${form.value.storage || 'no'} , call:${form.value.storageCall || 'no'}
-      Explained Claimant Inspection Options: ${form.value.clmntInspections || 'no'}
-      Offered EFT: ${form.value.eft || 'no'}
-      Rental Explained: ${form.value.rental || 'no'}
-      Jurisdictional Requirements: ${form.value.jr || 'no'}
-      Explained Online Claim Services/Self Services: ${form.value.rental || 'no'}
-      Additional Notes: ${form.value.additionalNotes || 'no'}
+      QFC (Name): ${this.qfcForm.value.name || 'no'}
+      Customer Described FOL (Speed/Time/Distance/Lookout): ${this.qfcForm.value.fol  || 'no'}
+      Purpose of Trip: ${this.qfcForm.value.purposeOfTrip || 'no'}
+      Passengers: ${this.qfcForm.value.passengers || 'no'}
+      Injuries: ${this.qfcForm.value.injuries || 'no'}
+      Comparative/Contributory Negligence Considered: ${this.qfcForm.value.compNeg  || 'no'}
+      Liability Explained: ${this.qfcForm.value.liability  || 'no'}
+      Sub Identified/OIC Updated: ${this.qfcForm.value.sub || 'no'}
+      Coverages Explained: ${this.qfcForm.value.coverages || 'no'}
+      ADSP Explained: ${this.qfcForm.value.adsp || 'no'}
+      Storage Accruing (If yes, indicate if 3-way call completed): ${this.qfcForm.value.storage || 'no'} , call:${this.qfcForm.value.storageCall || 'no'}
+      Explained Claimant Inspection Options: ${this.qfcForm.value.clmntInspections || 'no'}
+      Offered EFT: ${this.qfcForm.value.eft || 'no'}
+      Rental Explained: ${this.qfcForm.value.rental || 'no'}
+      Jurisdictional Requirements: ${this.qfcForm.value.jr || 'no'}
+      Explained Online Claim Services/Self Services: ${this.qfcForm.value.ocs || 'no'}
+      Additional Notes: ${this.qfcForm.value.additionalNotes || 'no'}
 
     `;
-   this.fd.onCopy(qfcForm);
+   this.fd.onCopy(qfcFormCopy);
   }
 
-  onReset(form: NgForm){
-    form.reset();
+  onReset(){
+    this.qfcForm.reset();
     this.fd.openSnackBar('Form Reset', 'ok');
   }
 }
