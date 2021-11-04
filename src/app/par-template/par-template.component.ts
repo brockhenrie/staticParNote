@@ -73,7 +73,7 @@ export class ParTemplateComponent implements OnInit, OnDestroy{
     Cprs: ${this.parForm.value.cprs || 'no'}
     Cprs Replacement Needed: ${this.parForm.value.cprsReplacement || 'no'}
     Tow: ${this.parForm.value.tow|| 'no'}
-    Tow ID: ${this.parForm.value.towID || 'no'}
+    Tow ID: ${this.parForm.value.towId || 'no'}
     Explained Mitigation: ${this.parForm.value.mitigation || 'no'}
     Explained OCS/CSS: ${this.parForm.value.ocs|| 'no'}
     Explained Terms&Conditions: ${this.parForm.value.terms|| 'no'}
