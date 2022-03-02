@@ -7,19 +7,24 @@
   align-items: center;
   padding-top: 25px;
 
-  .spacer{
-    flex: 1 1 auto;
-  }
+
 
   .template-card {
     width: 100%;
     max-width: 600px;
+
+
+
     .select-row{
 
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+
+      .spacer{
+        flex: 1 1 auto;
+      }
     }
 
     .template-header {

@@ -24,5 +24,15 @@ export class TemplateComponent implements OnInit {
     this.activeTemplate = event.value as Template;
     console.log(this.activeTemplate)
   }
-  
+
+  onCopyForm(){
+    const formValue = this.activeTemplate.form.value;
+    this.ts.copyActiveForm(formValue);
+    this.activeTemplate.form.reset();
+  }
+
+  onResetForm(){
+    this.activeTemplate.form.reset();
+  }
+
 }

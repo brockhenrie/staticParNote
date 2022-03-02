@@ -1,28 +1,32 @@
 <div class="template-shell">
   <mat-card class="template-card">
     <mat-card-header class="template-header">
-      <mat-card-title align="start">
-        Templates
-      </mat-card-title>
+
+        <span class="select-row">
+          <mat-card-title align="start">
+          <span>
+            Select a Template
+          </span>
+        </mat-card-title>
+
+
+          <span class="spacer"> </span>
+          <span>
+            <mat-form-field class="template-select ">
+              <mat-label>Template</mat-label>
+              <mat-select (selectionChange)="onFormSelect($event)">
+                <mat-option *ngFor="let template of templates" [value]="template">
+                  {{template.templateName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+        </span>
+
+
+
     </mat-card-header>
     <mat-divider></mat-divider>
-    <div class="select-row">
-      <span>
-        Select a Template
-      </span>
-      <span class="spacer"></span>
-      <span>
-        <mat-form-field class="template-select ">
-          <mat-label>Template</mat-label>
-          <mat-select (selectionChange)="onFormSelect($event)">
-            <mat-option *ngFor="let template of templates" [value]="template">
-              {{template.templateName}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </span>
-    </div>
-
 
     <mat-card-content class="template-content" align="start">
       <app-template-form [template]="activeTemplate" ></app-template-form>
@@ -34,7 +38,7 @@
 
 
     <mat-card-actions class="template-actions" align="start">
-
+      <button mat-raised-button color="primary" (click)="onCopyForm()">Copy</button>
 
 
     </mat-card-actions>

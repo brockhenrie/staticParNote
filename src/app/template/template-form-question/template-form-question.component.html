@@ -1,53 +1,54 @@
-<div class="question-container">
-  <div *ngIf="questionConfig.type ==='radio'" >
-    <label id="label">{{questionConfig.label}}</label>
-    <br>
-    <mat-radio-group  color="primary"
+<ng-container [formGroup]="form" *ngIf="questionConfig">
+  <div [formGroupName]="questionConfig.formControlName">
 
-      class="radio-section"
-      >
-      <mat-radio-button class="radio-section-item"
-        *ngFor="let option of questionConfig.options" [value]="option">
-        {{option}}
-      </mat-radio-button>
-      <mat-error *ngIf="formControl.hasError('required')">
-        Field is <strong>required</strong>
-      </mat-error>
-    </mat-radio-group>
-  </div>
-
-  <div *ngIf="questionConfig.type ==='select' ">
-    <mat-form-field appearance="fill"  class="select-section">
-      <mat-label>{{questionConfig.label}}</mat-label>
-      <mat-select  >
-        <mat-option *ngFor="let option of questionConfig.options" [value]="option">
+    <div *ngIf="questionConfig.type ==='radio'" >
+      <label id="label">{{questionConfig.label}}</label>
+      <br>
+      <mat-radio-group color="primary" class="radio-section">
+        <mat-radio-button class="radio-section-item" *ngFor="let option of questionConfig.options" [value]="option"
+          (change)="onUpdateValue(questionConfig.formControlName, option)">
           {{option}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="formControl.hasError('required')">
+        </mat-radio-button>
+        <mat-error *ngIf="formControl.hasError('required') && form.touched">
+          Field is <strong>required</strong>
+        </mat-error>
+      </mat-radio-group>
+    </div>
+
+    <div *ngIf="questionConfig.type ==='select' ">
+      <mat-form-field appearance="fill" class="select-section">
+        <mat-label>{{questionConfig.label}}</mat-label>
+        <mat-select (change)="onUpdateValue(questionConfig.formControlName, formControl.value)">
+          <mat-option *ngFor="let option of questionConfig.options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formControl.hasError('required')  && form.touched">
+          Field is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="questionConfig.type ==='checkbox' " class="checkbox-section">
+      <section>
+        <mat-checkbox color="primary" #c (click)="onUpdateValue(questionConfig.formControlName, !c.checked )">{{questionConfig.label}}
+        </mat-checkbox>
+      </section>
+      <mat-error *ngIf="formControl.hasError('required')  && form.touched">
         Field is <strong>required</strong>
       </mat-error>
-    </mat-form-field>
+    </div>
+
+    <div *ngIf="questionConfig.type ==='input'">
+      <mat-form-field class="input-section" appearance="fill">
+        <mat-label>{{questionConfig.label}}</mat-label>
+        <input #i type="text" matInput (input)="onUpdateValue(questionConfig.formControlName, i.value)">
+        <mat-error *ngIf="formControl.hasError('required')  && form.touched">
+          Field is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
   </div>
 
-  <div *ngIf="questionConfig.type ==='checkbox' " class="checkbox-section">
-    <section >
-      <mat-checkbox >{{questionConfig.label}}</mat-checkbox>
-    </section>
-    <mat-error *ngIf="formControl.hasError('required')">
-      Field is <strong>required</strong>
-    </mat-error>
-  </div>
 
-  <div *ngIf="questionConfig.type ==='input'">
-    <mat-form-field class="input-section" appearance="fill">
-      <mat-label>{{questionConfig.label}}</mat-label>
-      <input type="text"  matInput>
-      <mat-error *ngIf="formControl.hasError('required')">
-        Field is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-  </div>
-
-</div>
-
+</ng-container>

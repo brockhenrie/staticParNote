@@ -1,6 +1,7 @@
 import { Template, TemplateQuestionConfig } from './../template.model';
 import { FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, AbstractControl } from '@angular/forms';
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { EventManager } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-template-form',
@@ -32,20 +33,12 @@ export class TemplateFormComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  selectionChange(event: Event){
-
+  updateValue(event: any){
+    const name = event.formControlName
+    this.template.form.patchValue({[name]: event.value})
+    this.template.form.updateValueAndValidity();
   }
 
-  private _initFormConfig(form: FormGroup, config: TemplateQuestionConfig[]){
-    let i = 0;
-    while(i < config.length){
-      const formConfig:QuestionConfig = {
-        questionConfig: config[i],
-        formControl: form.get(config[i].formControlName) as AbstractControl
-      }
-      this.formConfig.push(formConfig);
-    }
-  }
 }
 
 

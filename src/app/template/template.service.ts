@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ClipboardService } from 'ngx-clipboard';
 import { Template, TemplateQuestionConfig } from './template.model';
 
 @Injectable()
@@ -11,7 +13,8 @@ export class TemplateService {
 
   private activeForm = new FormGroup({});
 
-  constructor() {}
+  constructor( private clipboardApi: ClipboardService,
+    private _snackBar: MatSnackBar) {}
 
   getTemplates():Template[]{
     return [...this.templates]
@@ -31,9 +34,21 @@ export class TemplateService {
   getActiveForm(){
     return this.activeForm;
   }
-  copyActiveForm(){
+  copyActiveForm(formValue:any){
+    console.log(JSON.stringify(formValue))
 
   }
+
+  onCopy(form: string){
+    this.clipboardApi.copyFromContent(form);
+    this.openSnackBar('Copied', 'ok');
+   }
+
+   openSnackBar(message: string, action: string) {
+     this._snackBar.open(message, action, {
+       duration: 1000,
+     });
+   };
 
 }
 const parQuestionConfig: TemplateQuestionConfig[] = [

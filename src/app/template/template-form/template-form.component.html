@@ -1,12 +1,9 @@
 <div class="template-form">
-  <form *ngIf="template" [formGroup]="template.form">
+  <ng-container *ngIf="template" [formGroup]="template.form" >
 
-    <div  class="template-form-question">
-      <app-template-form-question *ngFor=" let questionConfig of formConfig;let i =index;" [questionNumber]="i" [questionConfig]="questionConfig"  ></app-template-form-question>
-
+    <div  class="template-question">
+      <app-template-form-question  *ngFor=" let questionConfig of template.questionConfigs;let i =index;"  [questionConfig]="questionConfig" (valueUpdate)="updateValue($event)" ></app-template-form-question>
     </div>
-
-
-  </form>
+  </ng-container>
 
 </div>
