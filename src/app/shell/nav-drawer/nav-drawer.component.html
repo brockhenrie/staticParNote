@@ -1,0 +1,6 @@
+<div class="drawer-content">
+  <mat-nav-list class="nav-list">
+    <a mat-list-item *ngFor="let link of routes" #r (click)="onNav(link.value)" > {{ link.key }} </a>
+  </mat-nav-list>
+</div>
+

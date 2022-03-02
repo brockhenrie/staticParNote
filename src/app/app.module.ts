@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { ParTemplateComponent } from './par-template/par-template.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
@@ -13,6 +12,12 @@ import { NotePadComponent } from './note-pad/note-pad.component';
 import { HomeComponent } from './home/home.component';
 import { WordTractsComponent } from './word-tracts/word-tracts.component';
 import { QfcComponent } from './qfc/qfc.component';
+import { ShellComponent } from './shell/shell.component';
+import { HeaderComponent } from './shell/header/header.component';
+import { NavDrawerComponent } from './shell/nav-drawer/nav-drawer.component';
+import { AccordMenuComponent } from './shared/accord-menu/accord-menu.component';
+import { FormComponent } from './shared/accord-menu/form/form.component';
+import { AccordContentDisplayComponent } from './shared/accord-menu/accord-content-display/accord-content-display.component';
 
 
 
@@ -20,12 +25,17 @@ import { QfcComponent } from './qfc/qfc.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavComponent,
     ParTemplateComponent,
     NotePadComponent,
     HomeComponent,
     WordTractsComponent,
-    QfcComponent
+    QfcComponent,
+    ShellComponent,
+    HeaderComponent,
+    NavDrawerComponent,
+    AccordMenuComponent,
+    FormComponent,
+    AccordContentDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +44,11 @@ import { QfcComponent } from './qfc/qfc.component';
     MaterialsModule,
     FormsModule,
     ClipboardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

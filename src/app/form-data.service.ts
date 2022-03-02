@@ -1,11 +1,14 @@
+import { FormBuilder } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { AccordMenu } from './shared/accord-menu/accord-menu.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormDataService {
+
  private persons = [
     'FNI',
     'NI',
@@ -21,6 +24,7 @@ export class FormDataService {
 
  private payees = [
     'SS',
+    'Digital Pay',
     'NPS',
     'Insured/Clmnt'
   ];
@@ -28,6 +32,7 @@ export class FormDataService {
 
 
   constructor(
+    
     private clipboardApi: ClipboardService,
     private _snackBar: MatSnackBar) { }
 
@@ -53,5 +58,7 @@ export class FormDataService {
         duration: 1000,
       });
     };
+
+
 
 }

@@ -1,13 +1,20 @@
 
-.sidenav-container {
+.shell-container {
   width: 100%;
   height: 100%;
-  margin: 10px;
-  border: 1px solid black;
+  margin: 0;
+}
+
+.drawer-container{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
 }
 
 .sidenav-drawer{
   width: 30%;
+  height: 100%;
 }
 
 .notes{
@@ -18,5 +25,5 @@
 
 .route {
   font-size: small;
-  
+
 }

@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-actions align="start" class="action-buttons">
+    <button mat-raised-button color="primary" (click)="accordion.openAll()">Expand All</button>
+    <button mat-raised-button color="accent" (click)="accordion.closeAll()">Collapse All</button>
+  </mat-card-actions>
+  <mat-card-content>
+    <mat-accordion class="headers-align" multi>
+
+      <mat-expansion-panel *ngFor="let panel of panels">
+
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{panel.header.title}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{panel.header.desc}}
+            <mat-icon>{{panel.header.icon}}</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="form-shell" *ngIf="panel.content.type === 'form'">
+          <app-form *ngIf="panel.content.form" [form]="panel.content.form" [formConfig]="panel.content.formConfig">
+          </app-form>
+        </div>
+
+        <div class="display" *ngIf="panel.content.type === 'display'">
+          <app-accord-content-display [config]="panel.content.formConfig"></app-accord-content-display>
+        </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>

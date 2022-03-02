@@ -15,6 +15,11 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -35,7 +40,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     TextFieldModule,
     MatGridListModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatTableModule,
+    MatSelectModule,
+    MatNativeDateModule
+
   ],
   exports: [
     MatSidenavModule,
@@ -52,7 +63,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     TextFieldModule,
     MatGridListModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatTableModule,
+    MatSelectModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialsModule { }

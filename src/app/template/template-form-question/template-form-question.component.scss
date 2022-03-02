@@ -1,0 +1,31 @@
+.question-container{
+ flex: start;
+  width: 100%;
+
+
+  .radio-section{
+    flex: start;
+    .radio-section-item{
+      margin: 0 8px;
+    }
+
+  }
+
+  .select-section{
+    width: 100%;
+  }
+
+  .checkbox-section{
+    flex: start;
+    .checkbox-section-item{
+      margin: 0 10px;
+      padding-left: 10px;
+    }
+  }
+
+  .input-section{
+    width: 100%;
+  }
+
+}
+

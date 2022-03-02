@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WordTractsComponent } from './word-tracts.component';
+import { AccordMenuComponent } from './accord-menu.component';
 
-describe('WordTractsComponent', () => {
-  let component: WordTractsComponent;
-  let fixture: ComponentFixture<WordTractsComponent>;
+describe('AccordMenuComponent', () => {
+  let component: AccordMenuComponent;
+  let fixture: ComponentFixture<AccordMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WordTractsComponent ]
+      declarations: [ AccordMenuComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WordTractsComponent);
+    fixture = TestBed.createComponent(AccordMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

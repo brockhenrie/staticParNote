@@ -1,0 +1,6 @@
+<form [formGroup]="form" class="form">
+  <mat-form-field class="form-question-shell" appearance="fill" *ngFor="let item of formConfig">
+    <mat-label>{{item.placeholder}}</mat-label>
+    <input matInput [formControlName]="item.name" >
+  </mat-form-field>
+</form>
