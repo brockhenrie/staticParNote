@@ -1,3 +1,4 @@
+import { ControlComponent } from './control/control.component';
 import { WordTractsComponent } from './word-tracts/word-tracts.component';
 import { HomeComponent } from './home/home.component';
 import { NotePadComponent } from './note-pad/note-pad.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
     loadChildren: () => import('./task-notes/task-notes.module').then(m => m.TaskNotesModule) },
 
 {path: 'notepad', component: NotePadComponent},
-{path: 'claimNotes', component: WordTractsComponent}
+{path: 'claimNotes', component: WordTractsComponent},
+{path:'control', component: ControlComponent}
 
 ];
 
@@ -25,3 +27,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

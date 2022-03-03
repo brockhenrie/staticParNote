@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, RouterLinkActive } from '@angular/router';
+import { routes } from '../routes';
 
 @Component({
   selector: 'app-shell',
@@ -9,12 +10,7 @@ import { Router, RouterLinkActive } from '@angular/router';
 export class ShellComponent implements OnInit {
   sidenavOpen = false;
   activeRoute = 'Home';
-  routes:{key:string, value:string[]}[] = [
-    {key:'Home', value:['home']},
-    {key:'Templates', value:['template']},
-    {key:'Task Notes', value:['taskNotes']},
-    {key:'Note Pad', value:['notepad']},
-  ]
+   routes = routes;
 
   @Input('cdkAutosizeMinRows') minRows= 4;
 

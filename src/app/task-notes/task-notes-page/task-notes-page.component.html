@@ -1,12 +1,14 @@
 <div class="task-notes-page">
   <mat-divider></mat-divider>
 
-  <mat-toolbar-row>
+  <mat-toolbar-row >
+    <div *ngIf="totalTasks$ | async as totalTasks" class="task-counter">
+      <p class="toolbar-item">Total Tasks: {{totalTasks}}</p>
 
-    <p class="toolbar-item">Total Tasks: {{totalTasks$ | async }}</p>
+      <button class="toolbar-item" mat-raised-button (click)="onCopyTotal(totalTasks)">Copy</button>
+      <button class="toolbar-item" mat-raised-button (click)="onResetTotal()">Reset</button>
+    </div>
 
-    <button class="toolbar-item" mat-raised-button (click)="onCopyTotal()">Copy</button>
-    <button class="toolbar-item" mat-raised-button (click)="onResetTotal()">Reset</button>
 
   </mat-toolbar-row>
   <mat-divider></mat-divider>

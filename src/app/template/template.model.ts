@@ -28,6 +28,10 @@ export interface TemplateQuestionConfig {
   initValue?: any;
   options?: string[];
   required?: boolean;
+  depends?: {
+    depends: boolean,
+    on: string
+  }
 }
 
 export type QuestionType = 'radio' | 'select' | 'checkbox' | 'input';

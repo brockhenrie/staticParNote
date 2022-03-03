@@ -1,0 +1,61 @@
+<div class="control-page">
+  <mat-card class="mat-card">
+      <mat-card-header>
+          <mat-card-title>Settings</mat-card-title>
+
+      </mat-card-header>
+      <mat-divider [inset]="'true'"></mat-divider>
+
+      <mat-card-content>
+          <div class="control-panel" >
+            <mat-table [dataSource]="dataSource" >
+              <ng-container matColumnDef="Setting">
+                <mat-header-cell *matHeaderCellDef> Setting
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.IO.label}} </mat-cell>
+              </ng-container>
+
+
+              <ng-container matColumnDef="Current">
+                <mat-header-cell *matHeaderCellDef> Current</mat-header-cell>
+                <mat-cell *matCellDef="let element"><div *ngIf="element.IO.currentValue === true;else Off">
+               <mat-icon class="mat-18">check</mat-icon>
+                </div>
+              <ng-template #Off>
+                <mat-icon class="mat-18">clear</mat-icon>
+              </ng-template> </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="Switch">
+                <mat-header-cell *matHeaderCellDef> Switch</mat-header-cell>
+                <mat-cell *matCellDef="let element">   <mat-slide-toggle
+
+                  class="example-margin"
+                  color="primary"
+                  [(ngModel)]="element.IO.currentValue"
+                  >
+                {{element.IO.label}}
+              </mat-slide-toggle>
+             </mat-cell>
+              </ng-container>
+
+              a-md-data-table-column
+              <!-- press ctrl + space to add more column snippet or delete this line -->
+
+              <!-- press ctrl + space to add more column snippet or delete this line -->
+
+              <!-- press ctrl + space to add more column snippet or delete this line -->
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </div>
+      </mat-card-content>
+      <mat-card-actions align="start">
+          <app-nav-drawer [routes]="routes"></app-nav-drawer>
+      </mat-card-actions>
+      <mat-card-footer>
+          Created by Brock Henrie bhenriedev@gmail.com @github.com/brockhenrie
+      </mat-card-footer>
+  </mat-card>
+</div>

@@ -1,3 +1,4 @@
+import { TaskNotesService } from './../task-notes.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { count } from 'rxjs/operators';
 import { TaskNote } from '../taskNote.model';
@@ -18,7 +19,7 @@ export class TaskNoteCardComponent implements OnInit {
   };
   @Output()
   taskCount = new EventEmitter<string>();
-  constructor() { }
+  constructor(private ts: TaskNotesService) { }
 
   ngOnInit(): void {
     if(!this.note.taskCount){
@@ -28,12 +29,14 @@ export class TaskNoteCardComponent implements OnInit {
       this.note.messCount = 0
     }
   }
-  onCopy(){
-
+  onCopyPar(){
+      this.ts.onCopy(`${this.note.p} \n${this.note.r}`)
   }
+  onCopySubject(){
+    this.ts.onCopy(`Claim Note`)
+}
 
   taskIncrement(){
-    console.log(this.note.cr)
     if(!this.note.taskCount){
       this.note.taskCount = 0
     }

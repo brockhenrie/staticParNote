@@ -21,8 +21,8 @@ export class TaskNotesPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onCopyTotal(){
-
+  onCopyTotal(amount:number){
+      this.ts.onCopy(`Total Tasks: ${amount}`)
   }
 
   onResetTotal(){

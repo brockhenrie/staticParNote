@@ -18,6 +18,7 @@ import { NavDrawerComponent } from './shell/nav-drawer/nav-drawer.component';
 import { AccordMenuComponent } from './shared/accord-menu/accord-menu.component';
 import { FormComponent } from './shared/accord-menu/form/form.component';
 import { AccordContentDisplayComponent } from './shared/accord-menu/accord-content-display/accord-content-display.component';
+import { ControlComponent } from './control/control.component';
 
 
 
@@ -35,7 +36,8 @@ import { AccordContentDisplayComponent } from './shared/accord-menu/accord-conte
     NavDrawerComponent,
     AccordMenuComponent,
     FormComponent,
-    AccordContentDisplayComponent
+    AccordContentDisplayComponent,
+    ControlComponent
   ],
   imports: [
     BrowserModule,
