@@ -20,6 +20,15 @@ export class ControlService {
   getSettings():Setting[]{
     return this.ls.getSettings();
   }
+
+  initSettings(){
+    const exists = this.getSettings();
+    if(exists){
+      return;
+    }
+    this.saveSettings(this.settings);
+    return
+  }
 }
 
 export interface Setting{

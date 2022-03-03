@@ -15,6 +15,7 @@ export class ControlComponent implements OnInit {
   constructor(private cs:ControlService) { }
 
   ngOnInit(): void {
+    
     this.dataSource = this.cs.getSettings();
   }
 
