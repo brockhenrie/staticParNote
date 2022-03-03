@@ -1,8 +1,8 @@
 <div class="template-form">
-  <ng-container *ngIf="template" [formGroup]="template.form" >
+  <ng-container *ngIf="activeTemplate$ |async as template" [formGroup]="template.form" >
 
     <div  class="template-question">
-      <app-template-form-question  *ngFor=" let questionConfig of template.questionConfigs;let i =index;"  [questionConfig]="questionConfig" (valueUpdate)="updateValue($event)" ></app-template-form-question>
+      <app-template-form-question  *ngFor=" let questionConfig of template.questionConfigs;let i =index;"  [questionConfig]="questionConfig" (valueUpdate)="updateValue(template,$event)" ></app-template-form-question>
     </div>
   </ng-container>
 

@@ -1,0 +1,40 @@
+
+
+.card-content{
+  padding-top: 16px;
+}
+
+
+.card-actions{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  padding-left:8px ;
+
+  .action-row{
+    display: flex;
+    flex-direction: row;
+    align-self: start;
+    justify-content:start;
+    padding-top: 16px;
+
+  }
+}
+.footer{
+  padding: 0 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  .item{
+    margin-left: 16px
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
+}
+
+
+

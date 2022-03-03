@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClipboardService } from 'ngx-clipboard';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Template, TemplateQuestionConfig } from './template.model';
 
 @Injectable()
 export class TemplateService {
+  private activeTemplate$ = new BehaviorSubject<Template>({...par});
   private templates: Template[] = [
     par,
     qfc
@@ -19,24 +21,17 @@ export class TemplateService {
   getTemplates():Template[]{
     return [...this.templates]
   }
-  setActiveForm(form:FormGroup){
-    this.activeForm = form;
+  setActiveForm(template: Template){
+    this.activeTemplate$.next(template);
   }
-  updateActiveForm(value:any, formControlName:string){
-    if(!this.activeForm){
-      throw new Error('No active template set')
-    }
-      this.activeForm.patchValue({[formControlName]: value});
-  }
-  resetForm(){
-    this.activeForm.reset();
-  }
-  getActiveForm(){
-    return this.activeForm;
-  }
-  copyActiveForm(formValue:any){
-    console.log(JSON.stringify(formValue))
 
+  getActiveForm(){
+    return this.activeTemplate$
+  }
+
+  copyForm(formValue:any, questionConfigs: TemplateQuestionConfig[], result?:string){
+    let value = this.templateText(formValue,questionConfigs);
+    this.onCopy(value);
   }
 
   onCopy(form: string){
@@ -49,6 +44,26 @@ export class TemplateService {
        duration: 1000,
      });
    };
+
+
+ templateText( formData:any, questionConfigs:TemplateQuestionConfig[], result?: string): string{
+  const strings:any =[];
+  let string =
+  `P/a \n`;
+    questionConfigs.forEach(questionConfig =>{
+      const item ={
+        label: questionConfig.label,
+      value: formData[questionConfig.formControlName] ? formData[questionConfig.formControlName] : 'No'
+      }
+      string = string + `${item.label}: ${item.value} \n`;
+    })
+
+    if(!result) result = 'Type Here!';
+    string = string + `\nR: ${result}`;
+    return string;
+}
+
+
 
 }
 const parQuestionConfig: TemplateQuestionConfig[] = [
@@ -321,5 +336,6 @@ const qfc: Template = {
     ocs: new FormControl(''),
     addNotes: new FormControl(''),
   }),
+
 };
 

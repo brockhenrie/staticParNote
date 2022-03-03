@@ -1,6 +1,6 @@
 <div class="home-page">
   <mat-toolbar>{{activatedRoute}}</mat-toolbar>
-  <app-accord-menu [panels]="accordItems"></app-accord-menu>
+  <app-accord-menu [panels]="accordItems" (ext)="onExtensionChanges($event)"></app-accord-menu>
 </div>
 
 

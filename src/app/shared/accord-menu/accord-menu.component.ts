@@ -1,6 +1,6 @@
 import { FormGroup } from '@angular/forms';
 import { AccordMenu } from './accord-menu.model';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
@@ -11,12 +11,17 @@ import { MatAccordion } from '@angular/material/expansion';
 export class AccordMenuComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   @Input() panels!:AccordMenu[];
+  @Output() ext = new EventEmitter();
 
   form!:FormGroup;
   constructor() { }
 
 
   ngOnInit(): void {
+  }
+
+  onExtChanges(ext:string){
+    this.ext.emit(ext)
   }
 
 }

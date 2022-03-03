@@ -13,13 +13,13 @@ export class TemplateFormQuestionComponent implements OnInit {
     type: 'radio',
     label: ''
   }
-  value:any;
+  value= null;
   form!:FormGroup;
   @Output() valueUpdate = new EventEmitter();
   constructor(private rootFormGroup: FormGroupDirective) { }
 
   ngOnInit(): void {
-    this.form = this.rootFormGroup.control
+    this.form = this.rootFormGroup.control;
   }
 
   get formControl(){
@@ -30,8 +30,14 @@ export class TemplateFormQuestionComponent implements OnInit {
     this.valueUpdate.emit({
       formControlName: this.questionConfig.formControlName,
       value: value,
+      type: this.questionConfig.type
     })
+    
+
   }
+
+
+
 
 }
 

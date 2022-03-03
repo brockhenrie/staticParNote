@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title align="start">{{ note.title }}</mat-card-title>
+    <!-- <mat-card-subtitle>Subtitle</mat-card-subtitle> -->
+  </mat-card-header>
+  <mat-divider [inset]="true"></mat-divider>
+  <mat-card-content class="card-content">
+    <p>
+      {{ note.p }} <br />
+      {{ note.r }}
+    </p>
+  </mat-card-content>
+  <mat-divider inset="true"></mat-divider>
+  <mat-card-actions  class="card-actions" align="start">
+    <div class="action-row">
+      <mat-slide-toggle [(ngModel)]="note.cr" color="primary" >Call Required</mat-slide-toggle>
+    </div>
+
+    <div class="action-row">
+      <button mat-raised-button color="primary" (click)="onCopy()">Copy</button>
+      <button mat-raised-button  (click)="onCopy()">"Claim Note"</button>
+      <button mat-icon-button (click)="taskIncrement()"><mat-icon>add</mat-icon></button>
+      <button mat-icon-button color="warn" (click)="taskDecrement()"><mat-icon>remove</mat-icon></button>
+    </div>
+  </mat-card-actions>
+  <mat-card-footer>
+    <div class="footer">
+      <div class="task-count">
+        <p>Task Completed: {{note.taskCount}}</p>
+      </div>
+
+      <div class="item">
+        <p>Messages: {{note.messCount}}</p>
+      </div>
+    </div>
+
+  </mat-card-footer>
+</mat-card>

@@ -1,9 +1,8 @@
 <div class="shell-container">
-  <app-header activeRoute="Note Buddy" (menuTrigger)="toggleSidenav()"></app-header>
+  <app-header class="toolbar" activeRoute="Note Buddy" (menuTrigger)="toggleSidenav()"></app-header>
   <mat-drawer-container class="drawer-container">
-    
+
     <mat-drawer class="sidenav-drawer" mode="side" [opened]='sidenavOpen'>
-      <app-header activeRoute="Menu" [navMode]="false" [navButton]="false"></app-header>
       <app-nav-drawer [routes]="routes" (sideNaveTrigger)="toggleSidenav()"></app-nav-drawer>
     </mat-drawer>
 

@@ -12,8 +12,7 @@ export class ShellComponent implements OnInit {
   routes:{key:string, value:string[]}[] = [
     {key:'Home', value:['home']},
     {key:'Templates', value:['template']},
-    {key:'QFC', value:['template','qfc']},
-    {key:'Claim Notes', value:['claimNotes']},
+    {key:'Task Notes', value:['taskNotes']},
     {key:'Note Pad', value:['notepad']},
   ]
 

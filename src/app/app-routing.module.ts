@@ -11,6 +11,9 @@ const routes: Routes = [
 {
   path:'template',
   loadChildren: () => import('./template/template.module').then(m => m.TemplateModule) },
+  {
+    path:'taskNotes',
+    loadChildren: () => import('./task-notes/task-notes.module').then(m => m.TaskNotesModule) },
 
 {path: 'notepad', component: NotePadComponent},
 {path: 'claimNotes', component: WordTractsComponent}

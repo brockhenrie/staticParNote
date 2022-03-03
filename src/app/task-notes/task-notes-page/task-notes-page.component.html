@@ -1,0 +1,17 @@
+<div class="task-notes-page">
+  <mat-divider></mat-divider>
+
+  <mat-toolbar-row>
+
+    <p class="toolbar-item">Total Tasks: {{totalTasks$ | async }}</p>
+
+    <button class="toolbar-item" mat-raised-button (click)="onCopyTotal()">Copy</button>
+    <button class="toolbar-item" mat-raised-button (click)="onResetTotal()">Reset</button>
+
+  </mat-toolbar-row>
+  <mat-divider></mat-divider>
+  <div *ngFor="let note of taskNotes; let i = index;" class="card-border">
+    <app-task-note-card [note]="note" (taskCount)="taskCount($event)"></app-task-note-card>
+
+  </div>
+</div>

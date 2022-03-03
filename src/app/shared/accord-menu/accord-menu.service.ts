@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { LocalstorageService } from 'src/app/localstorage.service';
 import { AccordMenu } from './accord-menu.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccordMenuService {
+
   private contactInfo: AccordMenu = {
     header: {
       title: 'Language Line Solutions',
@@ -18,7 +20,7 @@ export class AccordMenuService {
       form: this.fb.group({
         clientId: ['799841'],
         departCode: ['124753'],
-        personalExtension: [''],
+        personalExtension: [this.ls.getPersonalExtension()],
       }),
       formConfig: [
         {
@@ -170,6 +172,7 @@ export class AccordMenuService {
   ];
   constructor(
     private fb:FormBuilder,
+    private ls: LocalstorageService
   ) { }
 
   getAccordItems(): AccordMenu[]{

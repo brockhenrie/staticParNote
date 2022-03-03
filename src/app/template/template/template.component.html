@@ -1,18 +1,17 @@
-<div class="template-shell">
+<div class="template-shell" *ngIf="activeTemplate$ | async as activeTemplate">
   <mat-card class="template-card">
     <mat-card-header class="template-header">
 
-        <span class="select-row">
-          <mat-card-title align="start">
-          <span>
+        <div class="select-row">
+          <mat-card-title>
             Select a Template
-          </span>
-        </mat-card-title>
+          </mat-card-title>
+
 
 
           <span class="spacer"> </span>
           <span>
-            <mat-form-field class="template-select ">
+            <mat-form-field class="template-select">
               <mat-label>Template</mat-label>
               <mat-select (selectionChange)="onFormSelect($event)">
                 <mat-option *ngFor="let template of templates" [value]="template">
@@ -21,7 +20,7 @@
               </mat-select>
             </mat-form-field>
           </span>
-        </span>
+        </div>
 
 
 
@@ -29,16 +28,14 @@
     <mat-divider></mat-divider>
 
     <mat-card-content class="template-content" align="start">
-      <app-template-form [template]="activeTemplate" ></app-template-form>
-      <div *ngIf="activeTemplate">
-        {{activeTemplate.form.value | json}}
-      </div>
+    
+      <app-template-form ></app-template-form>
 
     </mat-card-content>
 
 
     <mat-card-actions class="template-actions" align="start">
-      <button mat-raised-button color="primary" (click)="onCopyForm()">Copy</button>
+      <button mat-raised-button color="primary" (click)="onCopyForm(activeTemplate)">Copy</button>
 
 
     </mat-card-actions>

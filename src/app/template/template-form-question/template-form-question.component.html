@@ -5,7 +5,7 @@
       <label id="label">{{questionConfig.label}}</label>
       <br>
       <mat-radio-group color="primary" class="radio-section">
-        <mat-radio-button class="radio-section-item" *ngFor="let option of questionConfig.options" [value]="option"
+        <mat-radio-button  class="radio-section-item" *ngFor="let option of questionConfig.options" [value]="option"
           (change)="onUpdateValue(questionConfig.formControlName, option)">
           {{option}}
         </mat-radio-button>
@@ -31,7 +31,7 @@
 
     <div *ngIf="questionConfig.type ==='checkbox' " class="checkbox-section">
       <section>
-        <mat-checkbox color="primary" #c (click)="onUpdateValue(questionConfig.formControlName, !c.checked )">{{questionConfig.label}}
+        <mat-checkbox color="primary" #c value="false" (click)="onUpdateValue(questionConfig.formControlName, !c.checked )">{{questionConfig.label}}
         </mat-checkbox>
       </section>
       <mat-error *ngIf="formControl.hasError('required')  && form.touched">

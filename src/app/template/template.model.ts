@@ -1,12 +1,20 @@
 
 import { FormGroup } from '@angular/forms';
 
-export class Template implements TemplateFormConfiguration {
+
+
+
+
+export class Template implements TemplateFormConfiguration{
   constructor(
     public templateName: string,
     public questionConfigs: TemplateQuestionConfig[],
     public form: FormGroup
-  ) {}
+  ) {
+
+  }
+
+
 }
 
 export interface TemplateFormConfiguration {
@@ -23,4 +31,5 @@ export interface TemplateQuestionConfig {
 }
 
 export type QuestionType = 'radio' | 'select' | 'checkbox' | 'input';
+
 

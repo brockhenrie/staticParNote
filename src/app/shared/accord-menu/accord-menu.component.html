@@ -19,7 +19,7 @@
         </mat-expansion-panel-header>
 
         <div class="form-shell" *ngIf="panel.content.type === 'form'">
-          <app-form *ngIf="panel.content.form" [form]="panel.content.form" [formConfig]="panel.content.formConfig">
+          <app-form *ngIf="panel.content.form" [form]="panel.content.form" [formConfig]="panel.content.formConfig" (ext)="onExtChanges($event)">
           </app-form>
         </div>
 
