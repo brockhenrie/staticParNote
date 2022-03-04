@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "parnote-3d684"
+  },
+  "targets": {
+    "parnote-3d684": {
+      "hosting": {
+        "staticParNote": [
+          "parnote-3d684"
+        ]
+      }
+    }
+  }
+}

@@ -51,7 +51,26 @@ export class LocalstorageService {
   getSettings(): Setting[]{
     return JSON.parse(localStorage.getItem('settings')as string) as Setting[];
   }
+  saveNewCard(val:string){
+    localStorage.setItem(CARD_NEW, val)
+  }
+  getNewCard():string{
+    return localStorage.getItem(CARD_NEW) as string;
+  }
+  initNewCard():string{
+    const exists = this.getNewCard();
+    console.log(exists);
+    if(!exists){
+
+      this.saveNewCard('show');
+      return 'show';
+    }else{
+      return exists;
+    }
+
+  }
 }
 
 const TOTAL_TASKS = 'totalTasks';
 const PERSONAL_EXTENSION = 'personalExtension';
+const CARD_NEW = 'new-card'

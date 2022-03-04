@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "staticParNote:build:production",
+            "firebaseProject": "parnote-3d684",
+            "firebaseHostingSite": "parnote-3d684"
+          }
         }
       }
     }

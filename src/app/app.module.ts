@@ -16,7 +16,8 @@ import { AccordMenuComponent } from './shared/accord-menu/accord-menu.component'
 import { FormComponent } from './shared/accord-menu/form/form.component';
 import { AccordContentDisplayComponent } from './shared/accord-menu/accord-content-display/accord-content-display.component';
 import { ControlComponent } from './control/control.component';
-
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 
@@ -35,6 +36,7 @@ import { ControlComponent } from './control/control.component';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialsModule,

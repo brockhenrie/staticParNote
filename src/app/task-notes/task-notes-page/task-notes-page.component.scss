@@ -12,6 +12,7 @@
 }
 
 .card-container{
+  width: 100%;
   padding-top: 56px;
 
   display: flex;
@@ -21,7 +22,8 @@
 
   .card-border{
     margin-top: 16px;
-      max-width: 420px;
+    width: 100%;
+    max-width: 420px;
 
     }
 }

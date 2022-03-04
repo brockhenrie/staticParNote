@@ -10,6 +10,7 @@ import { Title } from '@angular/platform-browser';
 export class AppComponent implements OnInit {
   title = 'Note Buddy';
   constructor(private cs: ControlService,
+    
     private ts: Title){
 
   }
