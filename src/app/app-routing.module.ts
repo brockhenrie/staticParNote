@@ -1,5 +1,4 @@
 import { ControlComponent } from './control/control.component';
-import { WordTractsComponent } from './word-tracts/word-tracts.component';
 import { HomeComponent } from './home/home.component';
 import { NotePadComponent } from './note-pad/note-pad.component';
 import { NgModule } from '@angular/core';
@@ -17,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./task-notes/task-notes.module').then(m => m.TaskNotesModule) },
 
 {path: 'notepad', component: NotePadComponent},
-{path: 'claimNotes', component: WordTractsComponent},
-{path:'control', component: ControlComponent}
+{path:'control', component: ControlComponent},
+{path: '**',component: HomeComponent}
 
 ];
 

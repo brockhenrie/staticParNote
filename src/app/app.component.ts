@@ -1,5 +1,6 @@
 import { ControlService } from './control/control.service';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'staticParNote';
-  constructor(private cs: ControlService){
+  title = 'Note Buddy';
+  constructor(private cs: ControlService,
+    private ts: Title){
 
   }
   ngOnInit(){
+    this.ts.setTitle(this.title)
     this.cs.initSettings();
   }
 }

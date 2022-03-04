@@ -5,13 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ParTemplateComponent } from './par-template/par-template.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 import { NotePadComponent } from './note-pad/note-pad.component';
 import { HomeComponent } from './home/home.component';
-import { WordTractsComponent } from './word-tracts/word-tracts.component';
-import { QfcComponent } from './qfc/qfc.component';
 import { ShellComponent } from './shell/shell.component';
 import { HeaderComponent } from './shell/header/header.component';
 import { NavDrawerComponent } from './shell/nav-drawer/nav-drawer.component';
@@ -26,11 +23,8 @@ import { ControlComponent } from './control/control.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ParTemplateComponent,
     NotePadComponent,
     HomeComponent,
-    WordTractsComponent,
-    QfcComponent,
     ShellComponent,
     HeaderComponent,
     NavDrawerComponent,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { routes } from '../routes';
 import { Setting, ControlService } from './control.service';
 
@@ -11,11 +12,14 @@ export class ControlComponent implements OnInit {
   routes = routes;
   dataSource!:Setting[];
   displayedColumns = ['Setting','Current', 'Switch'];
-
-  constructor(private cs:ControlService) { }
+title="Settings";
+  constructor(
+    private cs:ControlService,
+    private ts: Title
+    ) { }
 
   ngOnInit(): void {
-    
+this.ts.setTitle(this.title);
     this.dataSource = this.cs.getSettings();
   }
 

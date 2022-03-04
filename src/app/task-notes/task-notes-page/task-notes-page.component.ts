@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { count } from 'rxjs/operators';
 import { LocalstorageService } from '../../localstorage.service';
 import { TaskNotesService } from '../task-notes.service';
@@ -11,14 +12,16 @@ import { TaskNote } from '../taskNote.model';
 })
 export class TaskNotesPageComponent implements OnInit {
 
-
+title = 'Task Notes';
 
   taskNotes = this.ts.getTaskNotes();
   totalTasks$ = this.ls.taskTotal$;
   constructor(private ts: TaskNotesService,
-    private ls:LocalstorageService) { }
+    private ls:LocalstorageService,
+    private tsk: Title) { }
 
   ngOnInit(): void {
+    this.tsk.setTitle(this.title)
   }
 
   onCopyTotal(amount:number){

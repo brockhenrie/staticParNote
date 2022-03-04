@@ -1,6 +1,22 @@
 <div class="home-page">
   <mat-toolbar>{{activatedRoute}}</mat-toolbar>
   <app-accord-menu [panels]="accordItems" (ext)="onExtensionChanges($event)"></app-accord-menu>
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>Whats New</mat-card-title>
+          <mat-card-subtitle>Version 2.0</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+          Personal Extension in home page saves. Will need to reEnter value when cache is cleared on PC
+          Now only one page for templates. QFC or PAR form selected from dropdown.
+          Form will reset and redirect to home page after copy button clicked.
+          Word Tracts page removed.
+          Total Task counter now at top of tasks page and saves value until you clear your cache.
+      </mat-card-content>
+      <mat-card-footer>
+          Footer
+      </mat-card-footer>
+  </mat-card>
 </div>
 
 

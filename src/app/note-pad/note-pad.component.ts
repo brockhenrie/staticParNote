@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-note-pad',
@@ -7,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotePadComponent implements OnInit {
   textOnly = '';
+  title = 'Notepad';
 
-  constructor() { }
+  constructor(private ts: Title) { }
 
   ngOnInit(): void {
+    this.ts.setTitle(this.title)
   }
 
 }

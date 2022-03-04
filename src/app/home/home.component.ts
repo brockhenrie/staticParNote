@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { AccordMenu } from './../shared/accord-menu/accord-menu.model';
 import { Component, OnInit } from '@angular/core';
 import {take} from 'rxjs/operators'
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -12,7 +13,8 @@ import {take} from 'rxjs/operators'
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  activatedRoute!:string;
+  title = 'Home';
+  activatedRoute = 'Home';
 
   accordItems!: AccordMenu[];
 
@@ -21,11 +23,13 @@ export class HomeComponent implements OnInit {
   constructor(
     private accordServ: AccordMenuService,
     private activeRoute: ActivatedRoute,
-    private ls: LocalstorageService
+    private ls: LocalstorageService,
+    private ts: Title,
     ) {}
 
   ngOnInit(): void {
     this._initHome();
+    this.ts.setTitle(this.title)
   }
 
   onExtensionChanges(extension:string){
@@ -40,13 +44,13 @@ export class HomeComponent implements OnInit {
 
   private _initHome(){
     this.accordItems = this.accordServ.getAccordItems();
-    this.activeRoute.url
-    .pipe(take(1))
-    .subscribe(segment=>{
-      const route = segment[0].path;
-      this.getExtension();
-     this.activatedRoute = route.charAt(0).toLocaleUpperCase() + route.slice(1)}
+    // this.activeRoute.url
+    // .pipe(take(1))
+    // .subscribe(segment=>{
+    //   const route = segment[0].path;
+    //   this.getExtension();
+    //  this.activatedRoute = route.charAt(0).toLocaleUpperCase() + route.slice(1)}
 
-     );
+    //  );
   }
 }

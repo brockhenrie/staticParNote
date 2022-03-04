@@ -1,6 +1,4 @@
 <div class="task-notes-page">
-  <mat-divider></mat-divider>
-
   <mat-toolbar-row >
     <div *ngIf="totalTasks$ | async as totalTasks" class="task-counter">
       <p class="toolbar-item">Total Tasks: {{totalTasks}}</p>
@@ -11,9 +9,13 @@
 
 
   </mat-toolbar-row>
-  <mat-divider></mat-divider>
-  <div *ngFor="let note of taskNotes; let i = index;" class="card-border">
-    <app-task-note-card [note]="note" (taskCount)="taskCount($event)"></app-task-note-card>
+  <div class="card-container">
+    <div *ngFor="let note of taskNotes; let i = index;" class="card-border">
+      <app-task-note-card [note]="note" (taskCount)="taskCount($event)"></app-task-note-card>
+
+    </div>
 
   </div>
+
 </div>
+ 
