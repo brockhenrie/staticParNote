@@ -69,8 +69,21 @@ export class LocalstorageService {
     }
 
   }
+
+  getNotes(){
+    const notes = localStorage.getItem(NOTEPAD);
+    if(!notes){
+      return '';
+    }
+    return notes;
+  }
+
+  saveNotes(notes:string){
+    localStorage.setItem(NOTEPAD,notes);
+  }
 }
 
 const TOTAL_TASKS = 'totalTasks';
 const PERSONAL_EXTENSION = 'personalExtension';
-const CARD_NEW = 'new-card'
+const CARD_NEW = 'new-card';
+const NOTEPAD = 'notepad';
